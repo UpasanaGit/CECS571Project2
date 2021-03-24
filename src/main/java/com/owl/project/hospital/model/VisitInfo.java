@@ -7,8 +7,10 @@ package com.owl.project.hospital.model;
 
 /**
  *
- * @author Upasana
+ * @author Gayathri
  */
+
+// model class for unplanned visit info - getter and setter methods
 public class VisitInfo {
 
     public String denominator = "",

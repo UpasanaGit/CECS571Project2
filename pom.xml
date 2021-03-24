@@ -25,7 +25,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <mainClass>com.owl.project.hospital.OntHandler</mainClass>
+                    <mainClass>com.owl.project.hospital.controller.OntHandler</mainClass>
                 </configuration>
             </plugin>
             
@@ -51,7 +51,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        com.owl.project.hospital.OntHandler
+                                        com.owl.project.hospital.controller.OntHandler
                                     </mainClass>
                                 </manifest>
                             </archive>
@@ -61,6 +61,20 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.4</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                            <mainClass>com.owl.project.hospital.controller.OntHandler</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

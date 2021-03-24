@@ -7,8 +7,9 @@ package com.owl.project.hospital.model;
 
 /**
  *
- * @author Upasana
+ * @author Aditi
  */
+// model class for State info - getter and setter methods
 public class StateInfo {
 
     String stateCode;

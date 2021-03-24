@@ -40,7 +40,6 @@ public class OntModelHandler {
 
     /*----------------------------------------- ORDER SHOULD BE MAINTAINED IN ALL THE LIST ENDS HERE -----------------------------------------     */
     //@author Aditi
-
     /*----------------------------------------- For VISITS ORDER SHOULD BE MAINTAINED IN ALL THE LIST -----------------------------------------     */
     public static enum EntitiesVisits {
         VisitStats, VisitMeasureId, VisitMeasureName, Denominator, NumOfPatients, PatientsReturned, VisitYear
@@ -68,6 +67,7 @@ public class OntModelHandler {
     public static enum BeneficiaryisOfProperties {
         isBenStatsOf, isBenMeasureIdOf, isBenMeasureNameOf, isBenScoreOf, isBenYearOf
     }
+////**** Gayathri *****
 
     private OntModel ontModel;
 
@@ -104,6 +104,8 @@ public class OntModelHandler {
             OntClass countryClass = ontModel.createClass(nameSpace + Entities.Country);
             countryClass.addComment("Considering the fedral data of USA for wide variety of inhabitats.", "EN");
 
+            // benSt class will act as canvas to add more elements
+            //@author Gayathri
             OntClass benStClass = ontModel.createClass(nameSpace + BeneficiaryEntities.BenStats);
             benStClass.addComment("This represents the Beneficiary Year Stats data", "EN");
 
@@ -127,12 +129,15 @@ public class OntModelHandler {
             hospitalInfo.convertToIntersectionClass(ontModel.createList(ontModel.createClass(nameSpace + Entities.FacilityId), ontModel.createClass(nameSpace + Entities.FacilityName),
                     ontModel.createClass(nameSpace + Entities.PhoneNumber), ontModel.createClass(nameSpace + Entities.Ownership), ontModel.createClass(nameSpace + Entities.EmergencyService), ontModel.createClass(nameSpace + Entities.Type)));
 
+            //@author Aditi
             visitYearClass.convertToIntersectionClass(ontModel.createList(ontModel.createClass(nameSpace + hasVisitProperties.hasNumOfPatients), ontModel.createClass(nameSpace + hasVisitProperties.hasPatientsReturned),
                     ontModel.createClass(nameSpace + hasVisitProperties.hasVisitYear), ontModel.createClass(nameSpace + hasVisitProperties.hasDenominator), ontModel.createClass(nameSpace + hasVisitProperties.hasVisitMeasureId),
                     ontModel.createClass(nameSpace + hasVisitProperties.hasVisitMeasureName)));
 
+            //@author Gayathri
             benYearClass.convertToIntersectionClass(ontModel.createList(ontModel.createClass(nameSpace + BenificiaryhasProperties.hasBenScore), ontModel.createClass(nameSpace + BenificiaryhasProperties.hasBenMeasureId), ontModel.createClass(nameSpace + BenificiaryhasProperties.hasBenMeasureName)));
 
+            //@author Upasana
             int index = 0;
             for (hasProperties prop : hasProperties.values()) {
                 //method call to set up the hasProperty in the model
@@ -141,9 +146,9 @@ public class OntModelHandler {
                 index++;
             }
 
+            //@author Aditi
             index = 0;
             for (hasVisitProperties visitProp : hasVisitProperties.values()) {
-                //method call to set up the hasVisitProperty in the model
                 ObjectProperty objProp = ontModel.createObjectProperty(nameSpace + visitProp);
                 String comText = visitProp.name();
                 if ("hasVisitStats".equals(comText)) {
@@ -159,9 +164,9 @@ public class OntModelHandler {
                 index++;
             }
 
+            //@author Gayathri
             index = 0;
             for (BenificiaryhasProperties benprop : BenificiaryhasProperties.values()) {
-                //method call to set up the hasBeneficiaryProperty in the model
                 ObjectProperty objProp = ontModel.createObjectProperty(nameSpace + benprop);
                 String comText = benprop.name();
                 if ("hasBenStats".equals(comText)) {
@@ -237,6 +242,7 @@ public class OntModelHandler {
             hasProp [hasProperties] {enum class object corresponding to isOFProperty}
             propOf [String] - mainClass Name in which properties are added
             index [int] - index to use to get exact object from isOfProperties enum with respect to the hasProperties enum
+            comText [String] - comment text
      */
     public void setIsOfProperties(OntModel model, ObjectProperty objProp, String propOf, int index, String comText) {
         try {
@@ -252,7 +258,8 @@ public class OntModelHandler {
             else if ("VisitInfo".equals(propOf)) {
                 objOfProp = model.createObjectProperty(nameSpace + isOfVisitProperties.values()[index]);
                 objOfProp.addComment(isOfVisitProperties.values()[index].name() + " " + propOf, "EN");
-            } else if ("beneficiary".equals(propOf)) {
+            } //@author Gayathri
+            else if ("beneficiary".equals(propOf)) {
                 objOfProp = model.createObjectProperty(nameSpace + BeneficiaryisOfProperties.values()[index]);
                 objOfProp.addComment(BeneficiaryisOfProperties.values()[index].name() + " " + propOf, "EN");
             }

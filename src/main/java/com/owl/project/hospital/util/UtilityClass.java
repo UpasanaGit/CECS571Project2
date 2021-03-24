@@ -23,6 +23,7 @@ public class UtilityClass {
 
     public static Map<String, String> stateNameMap = new LinkedHashMap<String, String>();
 
+    // initialize stateMap with the state code and their full name
     static {
         stateNameMap.put("AL", "Alabama");
         stateNameMap.put("AK", "Alaska");
@@ -96,7 +97,7 @@ public class UtilityClass {
     }
 
 
-    /* method to read csv file return List of data
+    /* method to read csv file return List of data consist values in key-value pair
     Input :- fileName [String]
     Output :- List<Object> == List<Map<String,Object>>
      */

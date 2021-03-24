@@ -72,6 +72,7 @@ public class OntHandler {
         return null;
     }
 
+    //@author Gayathri
     /* method to check State instance in stateMap on basis of stateCode and return class object
     Input :- stateCode [String]
     Output :- Object [State]
@@ -86,13 +87,13 @@ public class OntHandler {
     }
 
     /* method to read data from general information file of hospitals
-        set data in the hospitalMap declared global
+        set data in the hospitalMap declared global - all the required from the general information file
      */
     private void readGeneralInfo() {
         System.out.println("[WebSemantics] OntHandler class - inside method readGeneralInfo - inTime --- " + new Date().getTime());
         try {
             List<Object> dataList = new UtilityClass().readDataFromCSV("Hospital_General_Info.csv");
-//            for (int i = 0; i < 500; i++) {     // for now just modified loop to make program fast
+
             for (int i = 0; i < dataList.size(); i++) {
                 Map<String, Object> dataMap = (Map<String, Object>) dataList.get(i);
 
@@ -121,7 +122,7 @@ public class OntHandler {
     }
 
     /* method to read data from unplanned visit file of hospitals
-        set data in the hospitalMap declared global
+        set data in the hospitalMap declared global using Measure ID, Measure Name, Denominator, Number of Patients, Number of Patients Returned
      */
     // @Author Aditi
     private void readUnplannedVisitInfo() {
@@ -130,7 +131,7 @@ public class OntHandler {
             List<Object> dataList = new UtilityClass().readDataFromCSV("Unplanned_Hospital_Visit.csv");
 
             List<VisitInfo> visitList = new ArrayList<VisitInfo>();
-//            for (int i = 0; i < 500; i++) {     // for now just modified loop to make program fast
+
             for (int i = 0; i < dataList.size(); i++) {
                 Map<String, Object> dataVisitMap = (Map<String, Object>) dataList.get(i);
                 String den = dataVisitMap.get("Denominator").toString();
@@ -172,13 +173,13 @@ public class OntHandler {
     }
 
     /* method to read data from beneficiary file of hospitals
-        set data in the hospitalMap declared global
+        set data in the hospitalMap declared global using Score, Measure ID, Measure Name
      */
+    //@author Gayathri
     private void readBeneficiaryInfo() {
         System.out.println("[WebSemantics] OntHandler class - inside method readBeneficiaryInfo - inTime --- " + new Date().getTime());
         try {
             List<Object> dataList = new UtilityClass().readDataFromCSV("Medicare_Spending_Beneficiary.csv");
-//            for (int i = 0; i < 500; i++) {     // for now just modified loop to make program fast
             for (int i = 0; i < dataList.size(); i++) {
                 Map<String, Object> bendataMap = (Map<String, Object>) dataList.get(i);
                 String facilityId = bendataMap.get("Facility ID").toString();
@@ -197,7 +198,10 @@ public class OntHandler {
         }
     }
 
-    // method to add GeneralInfo to model using Individual class for future use in case of queries
+    /* method to add GeneralInfo to model using Individual class for future use in case of queries
+    Input:- hospitalList [List<HospitalInfo>] - final list of hospital data to be added in the model
+     */
+    //@author Upasana
     private void addGeneralInfoToModel(List<HospitalInfo> hospitalList) {
         System.out.println("[WebSemantics] OntHandler class - inside method addGeneralInfoToModel - inTime --- " + new Date().getTime());
         try {
@@ -232,11 +236,13 @@ public class OntHandler {
                 ontModel.add(hospitalInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasProperties.hasType), typeInst);
                 ontModel.add(hospitalInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasProperties.hasRating), h.getRating());
 
+                //@author Gayathri
                 ontModel.add(benInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.BenificiaryhasProperties.hasBenScore), h.getScore());
                 ontModel.add(benInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.BenificiaryhasProperties.hasBenMeasureId), h.getBenMeasureId());
                 ontModel.add(benInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.BenificiaryhasProperties.hasBenMeasureName), h.getBenMeasureName());
                 ontModel.add(benInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.BenificiaryhasProperties.hasBenYear), "2018");
 
+                //@author Aditi
                 List<VisitInfo> vList = h.getVisitList();
                 if (vList != null) {
                     int index = 1;
@@ -260,7 +266,10 @@ public class OntHandler {
         }
     }
 
-    // method to map total number of patients and number of patients returned to our model according to the state from visit file
+    /* method to map total number of patients and number of patients returned to our model according to the state from visit file
+           Input:- states [List<StateInfo>]
+     */
+    //@author Gayathri
     public void addPatientNumber(List<StateInfo> states) {
         OntClass state = ontModel.getOntClass(OntModelHandler.nameSpace + OntModelHandler.Entities.State);
         for (StateInfo st : states) {
@@ -278,7 +287,10 @@ public class OntHandler {
         }
     }
 
-    // method to remove irrelevant data from dataMap
+    /* method to remove irrelevant data from dataMap
+        Input:- hospitalMap [Map<String, HospitalInfo>]
+     */
+    //@author Aditi
     private void filterMapData(Map<String, HospitalInfo> hospitalMap) {
         try {
             hospitalMap.entrySet().removeIf(entry -> {
@@ -292,7 +304,10 @@ public class OntHandler {
         }
     }
 
-    // if already created then get instance using Individual 
+    /* if already created then get instance using Individual 
+    Input:- instanceClass [OntClass]
+            URI [String]
+     */
     private Individual getIndividualRecord(OntClass instanceClass, String URI) {
         try {
             if (!cacheMemory.containsKey(URI)) {
@@ -307,15 +322,23 @@ public class OntHandler {
     public static void main(String[] args) {
         OntHandler modelInstance = new OntHandler();
         try {
+            // reading general data
             modelInstance.readGeneralInfo();
-            // Aditi
+            //@author Aditi
+            // reading unplanned visit data
             modelInstance.readUnplannedVisitInfo();
-            //Gayathri
+            //reading beneficiary data
+            //@author Gayathri
             modelInstance.readBeneficiaryInfo();
+            // filter the map data
             modelInstance.filterMapData(hospitalMap);
 
+            // @author Upasana
+            //adding general info to the data
             modelInstance.addGeneralInfoToModel(new ArrayList<>(modelInstance.hospitalMap.values()));
+            //adding patient numbers to the state
             modelInstance.addPatientNumber(new ArrayList<>(modelInstance.stateMap.values()));
+            //write the model to the file
             modelInstance.writeOWLModelToFile();
 
         } catch (Exception ex) {

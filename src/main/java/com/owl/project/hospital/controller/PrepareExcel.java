@@ -17,9 +17,11 @@ import java.util.Map;
  *
  * @author Upasana
  */
+// Data Prepration Class
 public class PrepareExcel {
 
-    public static void main(String[] args) {
+    // Method to prepare filtered data set from the original dataset - reduce data size
+    public void prepareCSVData() {
         try {
             List<Object> dataList = new UtilityClass().readDataFromCSV("Hospital_General_Information.csv");
             List<Object> visitList = new UtilityClass().readDataFromCSV("Unplanned_Hospital_Visits_Hospital.csv");

@@ -2,6 +2,11 @@ package com.owl.project.hospital.model;
 
 import java.util.List;
 
+/**
+ *
+ * @author Gayathri
+ */
+// model class for hospital info - getter and setter methods
 public class HospitalInfo {
 
     public String hospitalId,
@@ -20,9 +25,6 @@ public class HospitalInfo {
             avgPatients = "",
             benMeasureId = "",
             benMeasureName = "";
-//            denominator = "",
-//            visitMeasureId = "",
-//            visitMeasureName = "";
 
     public List<VisitInfo> visitList;
 
@@ -155,29 +157,6 @@ public class HospitalInfo {
         this.benMeasureName = benMeasureName;
     }
 
-//    public String getDenominator() {
-//        return denominator;
-//    }
-//
-//    public void setDenominator(String denominator) {
-//        this.denominator = denominator;
-//    }
-//
-//    public String getVisitMeasureId() {
-//        return visitMeasureId;
-//    }
-//
-//    public void setVisitMeasureId(String visitMeasureId) {
-//        this.visitMeasureId = visitMeasureId;
-//    }
-//
-//    public String getVisitMeasureName() {
-//        return visitMeasureName;
-//    }
-//
-//    public void setVisitMeasureName(String visitMeasureName) {
-//        this.visitMeasureName = visitMeasureName;
-//    }
     public String getOwnershipName() {
         return ownershipName;
     }
