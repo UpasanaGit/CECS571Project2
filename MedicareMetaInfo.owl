@@ -1,0 +1,331 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ds="https://data.medicare.gov/d/nrth-mfg3#"
+    xmlns:du="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#BenYear">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenScore"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureId"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureName"/>
+    </owl:intersectionOf>
+    <rdfs:comment xml:lang="EN">This represents the Beneficiary Year</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Hospital">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#FacilityId"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#FacilityName"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#PhoneNumber"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Ownership"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#EmergencyService"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Type"/>
+    </owl:intersectionOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="EN">Hospital class represent the general information including some beneficiary and unplanned visits statistics.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#State">
+    <rdfs:subClassOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:comment xml:lang="EN">Represents the states in the US.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#VisitStats">
+    <rdfs:comment xml:lang="EN">This represents the unplanned visits of patients </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Address"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#VisitYear">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasNumOfPatients"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPatientsReturned"/>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitYear"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasDenominator"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureId"/>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureName"/>
+    </owl:intersectionOf>
+    <rdfs:comment xml:lang="EN">This represents the unplanned visits of patients </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#City"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Country">
+    <rdfs:subClassOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:comment xml:lang="EN">Considering the fedral data of USA for wide variety of inhabitats.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#BenStats">
+    <rdfs:comment xml:lang="EN">This represents the Beneficiary Year Stats data</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Zipcode"/>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isZipcodeOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasZipcode"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isZipcodeOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenYear">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenYear"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenStats"/>
+    <rdfs:comment xml:lang="EN">beneficiary has property hasBenYear</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitMeasureNameOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureName"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isVisitMeasureNameOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isDenominatorOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasDenominator"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isDenominatorOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitStats">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+    <rdfs:comment xml:lang="EN">has MedicareMetadata's unplanned visit's</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isCityOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCity"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isCityOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenMeasureNameOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureName"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isBenMeasureNameOf beneficiary</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isTypeOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasType"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isTypeOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isStateOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasState"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isStateOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isRatingOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasRating"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isRatingOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasOwnership">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Ownership"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasOwnership</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenStats">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenStats"/>
+    <rdfs:comment xml:lang="EN"> has MedicareMetadata's beneficiary data </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isCountryOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCountry"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isCountryOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isPatientsReturnedOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPatientsReturned"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isPatientsReturnedOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasType">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Type"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasType</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasRating">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >5</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+          >1</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:comment xml:lang="EN">has ratings from 1-5 for hospitals</rdfs:comment>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasRating</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCity">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#City"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasCity</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isNumOfPatientsOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasNumOfPatients"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isNumOfPatientsOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenScoreOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenScore"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isBenScoreOf beneficiary</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasState">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#State"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasState</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isOwnershipOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasOwnership"/>
+    <rdfs:comment xml:lang="EN">isOwnershipOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasAddress">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Address"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasAddress</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenStatsOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasBenStats"/>
+    <rdfs:comment xml:lang="EN"> is MedicareMetadata's beneficiary data </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isAddressOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasAddress"/>
+    <rdfs:comment xml:lang="EN">isAddressOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitStatsOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasVisitStats"/>
+    <rdfs:comment xml:lang="EN"> is MedicareMetadata's unplanned visit</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitYear">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitYear"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasVisitYear</rdfs:comment>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#Class"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasZipcode">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Zipcode"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasZipcode</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenYearOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasBenYear"/>
+    <rdfs:comment xml:lang="EN">isBenYearOf beneficiary</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCountry">
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Country"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasCountry</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenMeasureIdOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureId"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isBenMeasureIdOf beneficiary</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitYearOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasVisitYear"/>
+    <rdfs:comment xml:lang="EN">isVisitYearOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isEmergencyServiceOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasEmergencyService"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isEmergencyServiceOf HospitalInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitMeasureIdOf">
+    <owl:inverseOf>
+      <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureId"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">isVisitMeasureIdOf VisitInfo</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureName">
+    <rdfs:comment xml:lang="EN">beneficiary has property hasBenMeasureName</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasNumOfPatients">
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasNumOfPatients</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasDenominator">
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasDenominator</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureName">
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasVisitMeasureName</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPatientsReturned">
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasPatientsReturned</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasFacilityId">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasFacilityId</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPhoneNumber">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasPhoneNumber</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasEmergencyService">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasEmergencyService</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureId">
+    <rdfs:comment xml:lang="EN">beneficiary has property hasBenMeasureId</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasFacilityName">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfo has property hasFacilityName</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureId">
+    <rdfs:comment xml:lang="EN">VisitInfo has property hasVisitMeasureId</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitStats"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenScore">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenStats"/>
+    <rdfs:comment xml:lang="EN">beneficiary has property hasBenScore</rdfs:comment>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.55</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+          >0.45</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:comment xml:lang="EN"> has score from 0.45-1.55 for hospitals</rdfs:comment>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isFacilityIdOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasFacilityId"/>
+    <rdfs:comment xml:lang="EN">isFacilityIdOf HospitalInfo</rdfs:comment>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isFacilityNameOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasFacilityName"/>
+    <rdfs:comment xml:lang="EN">isFacilityNameOf HospitalInfo</rdfs:comment>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isPhoneNumberOf">
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasPhoneNumber"/>
+    <rdfs:comment xml:lang="EN">isPhoneNumberOf HospitalInfo</rdfs:comment>
+  </owl:InverseFunctionalProperty>
+</rdf:RDF>

@@ -1,0 +1,554 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:ds="https://data.medicare.gov/d/nrth-mfg3#"
+    xmlns:du="http://www.ontologydesignpatterns.org/ont/dul/DUL.owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Hospital">
+    <owl:intersectionOf rdf:parseType="Collection">
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#FacilityId"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#FacilityName"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#PhoneNumber"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Type"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Type"/>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#EmergencyService"/>
+    </owl:intersectionOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    </rdfs:subClassOf>
+    <rdfs:comment xml:lang="EN">Hospital class represent the general information including some beneficiary and unplanned visits statistics.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Beneficiary">
+    <rdfs:comment xml:lang="EN">This represents the unplanned visits of patients </rdfs:comment>
+    <rdfs:comment xml:lang="EN">This represents the Beneficiary </rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#VisitMeasureName"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#State">
+    <rdfs:subClassOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:comment xml:lang="EN">Represents the states in the US.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Address"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Denominator"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#BenMeasureName"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#City"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Country">
+    <rdfs:subClassOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:comment xml:lang="EN">Considering the fedral data of USA for wide variety of inhabitats.</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#PatientsReturned"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#NumOfPatients"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#VisitMeasureId"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Ownership"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#Zipcode"/>
+  <owl:Class rdf:about="https://data.medicare.gov/d/nrth-mfg3#BenMeasureId"/>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisit"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">is MedicareMetadata's unplanned visit</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBeneficiaryOf">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBeneficiary"/>
+    </owl:inverseOf>
+    <rdfs:comment xml:lang="EN">is MedicareMetadata's beneficiary data </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisit">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">has MedicareMetadata's unplanned visit's</rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBeneficiary">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#MedicareMD"/>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Beneficiary"/>
+    <rdfs:comment xml:lang="EN">has MedicareMetadata's beneficiary data </rdfs:comment>
+  </owl:ObjectProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureName">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Beneficiary"/>
+    <rdfs:comment xml:lang="EN">beneficiaryhas property hasBenMeasureName</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenMeasureName"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasDenominator">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">VisitInfohas property hasDenominator</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Denominator"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureName">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">VisitInfohas property hasVisitMeasureName</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitMeasureName"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasAddress">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasAddress</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Address"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasFacilityId">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasFacilityId</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasZipcode">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasZipcode</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Zipcode"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasNumOfPatients">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">VisitInfohas property hasNumOfPatients</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#NumOfPatients"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCountry">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasCountry</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Country"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPatientsReturned">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">VisitInfohas property hasPatientsReturned</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#PatientsReturned"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasOwnership">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasOwnership</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Ownership"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasPhoneNumber">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasPhoneNumber</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasType">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasType</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Type"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasRating">
+    <rdfs:comment xml:lang="EN">has ratings from 1-5 for hospitals</rdfs:comment>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasRating</rdfs:comment>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+            >5</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+          >1</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasCity">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasCity</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#City"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasEmergencyService">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasEmergencyService</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureId">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Beneficiary"/>
+    <rdfs:comment xml:lang="EN">beneficiaryhas property hasBenMeasureId</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#BenMeasureId"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureId">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Visit"/>
+    <rdfs:comment xml:lang="EN">VisitInfohas property hasVisitMeasureId</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#VisitMeasureId"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasFacilityName">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasFacilityName</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasBenScore">
+    <rdfs:comment xml:lang="EN">has score from 0.45-1.55 for hospitals</rdfs:comment>
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Beneficiary"/>
+    <rdfs:comment xml:lang="EN">beneficiaryhas property hasBenScore</rdfs:comment>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+            >1.55</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#double"
+          >0.45</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#hasState">
+    <rdfs:domain rdf:resource="https://data.medicare.gov/d/nrth-mfg3#Hospital"/>
+    <rdfs:comment xml:lang="EN">HospitalInfohas property hasState</rdfs:comment>
+    <rdfs:range rdf:resource="https://data.medicare.gov/d/nrth-mfg3#State"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isFacilityIdOf">
+    <rdfs:comment xml:lang="EN">isFacilityIdOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasFacilityId"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isOwnershipOf">
+    <rdfs:comment xml:lang="EN">isOwnershipOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasOwnership"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isZipcodeOf">
+    <rdfs:comment xml:lang="EN">isZipcodeOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasZipcode"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isAddressOf">
+    <rdfs:comment xml:lang="EN">isAddressOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasAddress"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitMeasureNameOf">
+    <rdfs:comment xml:lang="EN">isVisitMeasureNameOf VisitInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureName"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isDenominatorOf">
+    <rdfs:comment xml:lang="EN">isDenominatorOf VisitInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasDenominator"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isCityOf">
+    <rdfs:comment xml:lang="EN">isCityOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasCity"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isTypeOf">
+    <rdfs:comment xml:lang="EN">isTypeOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasType"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenMeasureNameOf">
+    <rdfs:comment xml:lang="EN">isBenMeasureNameOf beneficiary</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureName"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isStateOf">
+    <rdfs:comment xml:lang="EN">isStateOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasState"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenMeasureIdOf">
+    <rdfs:comment xml:lang="EN">isBenMeasureIdOf beneficiary</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasBenMeasureId"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isRatingOf">
+    <rdfs:comment xml:lang="EN">isRatingOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasRating"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isEmergencyServiceOf">
+    <rdfs:comment xml:lang="EN">isEmergencyServiceOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasEmergencyService"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isCountryOf">
+    <rdfs:comment xml:lang="EN">isCountryOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasCountry"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isFacilityNameOf">
+    <rdfs:comment xml:lang="EN">isFacilityNameOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasFacilityName"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isPatientsReturnedOf">
+    <rdfs:comment xml:lang="EN">isPatientsReturnedOf VisitInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasPatientsReturned"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isVisitMeasureIdOf">
+    <rdfs:comment xml:lang="EN">isVisitMeasureIdOf VisitInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasVisitMeasureId"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isPhoneNumberOf">
+    <rdfs:comment xml:lang="EN">isPhoneNumberOf HospitalInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasPhoneNumber"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isNumOfPatientsOf">
+    <rdfs:comment xml:lang="EN">isNumOfPatientsOf VisitInfo</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasNumOfPatients"/>
+  </owl:InverseFunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="https://data.medicare.gov/d/nrth-mfg3#isBenScoreOf">
+    <rdfs:comment xml:lang="EN">isBenScoreOf beneficiary</rdfs:comment>
+    <owl:inverseOf rdf:resource="https://data.medicare.gov/d/nrth-mfg3#hasBenScore"/>
+  </owl:InverseFunctionalProperty>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#TN">
+    <ds:hasPatientsReturned>26</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>101</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Tennessee</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NJ">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">New Jersey</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#SD">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">South Dakota</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#GU">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Guam</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#OK">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Oklahoma</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#RI">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Rhode Island</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#CT">
+    <ds:hasPatientsReturned>47</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>180</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Connecticut</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#VI">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Virgin Islands</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#SC">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">South Carolina</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#VA">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Virginia</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MP">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Northern Mariana Islands</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NH">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">New Hampshire</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NY">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">New York</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#KS">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Kansas</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#DE">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Delaware</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MO">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Missouri</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#CA">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">California</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#DC">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">District Of Columbia</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#GA">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Georgia</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#ME">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Maine</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#WI">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Wisconsin</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#WA">
+    <ds:hasPatientsReturned>49</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>121</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Washington</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#IN">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Indiana</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MN">
+    <ds:hasPatientsReturned>Not Available</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Available</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Minnesota</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#OR">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Oregon</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#UT">
+    <ds:hasPatientsReturned>Not Available</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Available</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Utah</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#OH">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Ohio</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#ID">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Idaho</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MD">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Maryland</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#KY">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Kentucky</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#WY">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Wyoming</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NM">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">New Mexico</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#LA">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Louisiana</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NE">
+    <ds:hasPatientsReturned>Not Available</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Available</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Nebraska</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#PA">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Pennsylvania</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#AL">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Alabama</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MT">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Montana</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NV">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Nevada</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#PR">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Puerto Rico</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#IL">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Illinois</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#VT">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Vermont</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#WV">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">West Virginia</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#ND">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">North Dakota</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#AS">
+    <ds:hasPatientsReturned>Not Available</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Available</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">American Samoa</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#AK">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Alaska</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#CO">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Colorado</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MS">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Mississippi</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#HI">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Hawaii</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#AZ">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Arizona</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MI">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Michigan</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#NC">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">North Carolina</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#IA">
+    <ds:hasPatientsReturned>20</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>100</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Iowa</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#AR">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Arkansas</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#MA">
+    <ds:hasPatientsReturned>28</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>59</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Massachusetts</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#FL">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Florida</rdfs:comment>
+  </ds:State>
+  <ds:State rdf:about="https://data.medicare.gov/d/nrth-mfg3#TX">
+    <ds:hasPatientsReturned>Not Applicable</ds:hasPatientsReturned>
+    <ds:hasNumOfPatients>Not Applicable</ds:hasNumOfPatients>
+    <rdfs:comment xml:lang="EN">Texas</rdfs:comment>
+  </ds:State>
+</rdf:RDF>
