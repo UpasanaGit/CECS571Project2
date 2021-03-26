@@ -10,7 +10,7 @@ import com.opencsv.CSVReaderBuilder;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 public class UtilityClass {
 
-    public static Map<String, String> stateNameMap = new LinkedHashMap<String, String>();
+    public static Map<String, String> stateNameMap = new HashMap<String, String>();
 
     // initialize stateMap with the state code and their full name
     static {
@@ -111,7 +111,7 @@ public class UtilityClass {
             String[] csvData;
             String[] cols = openCsvReader.readNext();
             while ((csvData = openCsvReader.readNext()) != null) {
-                Map<String, Object> dataMap = new LinkedHashMap<String, Object>();
+                Map<String, Object> dataMap = new HashMap<String, Object>();
                 for (int i = 0; i < csvData.length; i++) {
                     dataMap.put(cols[i].trim(), csvData[i].trim());
                 }

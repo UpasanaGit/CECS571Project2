@@ -16,7 +16,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.apache.jena.ontology.Individual;
@@ -30,11 +30,11 @@ import org.apache.jena.ontology.OntModel;
 public class OntHandler {
 
     OntModel ontModel;
-    static Map<String, HospitalInfo> hospitalMap = new LinkedHashMap<String, HospitalInfo>();
-    static Map<String, StateInfo> stateMap = new LinkedHashMap<String, StateInfo>();
+    static Map<String, HospitalInfo> hospitalMap = new HashMap<String, HospitalInfo>();
+    static Map<String, StateInfo> stateMap = new HashMap<String, StateInfo>();
 
     // to store all (URI, individuals) to reduce searching time for an individual through model.
-    public Map<String, Individual> cacheMemory = new LinkedHashMap<String, Individual>();
+    public Map<String, Individual> cacheMemory = new HashMap<String, Individual>();
 
     // constructor to get the initialized ontModel from OntModelHandler class to make further modifications
     public OntHandler() {
@@ -134,14 +134,14 @@ public class OntHandler {
 
             for (int i = 0; i < dataList.size(); i++) {
                 Map<String, Object> dataVisitMap = (Map<String, Object>) dataList.get(i);
-                String den = dataVisitMap.get("Denominator").toString();
-                String mId = dataVisitMap.get("Measure ID").toString();
-                String mName = dataVisitMap.get("Measure Name").toString();
-                if (!"Not Available".equals(den) && !"Not Available".equals(mId) && !"Not Available".equals(mName)) {
+                String den = dataVisitMap.get("Denominator").toString().trim();
+                String patientNum = dataVisitMap.get("Number of Patients").toString().trim();
+                String patientNumReturn = dataVisitMap.get("Number of Patients Returned").toString().trim();
+                if (!"Not Applicable".equals(patientNum) && !"Not Applicable".equals(patientNumReturn) && !"Not Available".equals(den)) {
                     VisitInfo visitObj = new VisitInfo();
                     visitObj.setDenominator(den);
-                    visitObj.setVisitMeasureId(mId);
-                    visitObj.setVisitMeasureName(mName);
+                    visitObj.setVisitMeasureId(dataVisitMap.get("Measure ID").toString());
+                    visitObj.setVisitMeasureName(dataVisitMap.get("Measure Name").toString());
 
                     String facilityId = dataVisitMap.get("Facility ID").toString();
 
@@ -155,14 +155,8 @@ public class OntHandler {
                     hospitalMap.put(facilityId, hospital);
 
                     StateInfo stateInst = getStateInstance(dataVisitMap.get("State").toString());
-                    String patientNum = dataVisitMap.get("Number of Patients").toString();
-                    if (!"Not Available".equals(patientNum)) {
-                        stateInst.setPatientNum(patientNum);
-                    }
-                    String patientNumReturn = dataVisitMap.get("Number of Patients Returned").toString();
-                    if (!"Not Available".equals(patientNumReturn)) {
-                        stateInst.setPatientReturnNum(patientNumReturn);
-                    }
+                    stateInst.setPatientNum(patientNum);
+                    stateInst.setPatientReturnNum(patientNumReturn);
                     stateMap.put(stateInst.getStateCode(), stateInst);
                 }
             }
@@ -218,10 +212,10 @@ public class OntHandler {
             for (HospitalInfo h : hospitalList) {
                 Individual hospitalInst = hospitalInfo.createIndividual(OntModelHandler.nameSpace + h.getHospitalId());
                 Individual stateInst = getIndividualRecord(stateClass, OntModelHandler.nameSpace + h.getState());
-                Individual countryInst = getIndividualRecord(countryClass, OntModelHandler.nameSpace + "USA");
-                Individual typeInst = getIndividualRecord(type, OntModelHandler.nameSpace + h.getType());
-                Individual ownershipInst = getIndividualRecord(ownership, OntModelHandler.nameSpace + h.getOwnershipName());
-                Individual benInst = getIndividualRecord(beneficiary, OntModelHandler.nameSpace + h.getHospitalId() + "2018");
+                Individual countryInst = countryClass.createIndividual(OntModelHandler.nameSpace + "USA");
+                Individual typeInst = type.createIndividual(OntModelHandler.nameSpace + h.getType());
+                Individual ownershipInst = ownership.createIndividual(OntModelHandler.nameSpace + h.getOwnershipName());
+                Individual benInst = beneficiary.createIndividual(OntModelHandler.nameSpace + h.getHospitalId() + "2018");
 
                 ontModel.add(hospitalInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasProperties.hasFacilityName), h.getHospitalName());
                 ontModel.add(hospitalInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasProperties.hasFacilityId), h.getHospitalId());
@@ -278,29 +272,13 @@ public class OntHandler {
                 stateInst = state.createIndividual(OntModelHandler.nameSpace + st.getStateCode());
                 stateInst.addComment(new UtilityClass().getStateName(st.getStateCode()), "EN");
             }
+
             if (st.getPatientNum() != null) {
                 ontModel.add(stateInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasVisitProperties.hasNumOfPatients), st.getPatientNum());
             }
             if (st.getPatientReturnNum() != null) {
                 ontModel.add(stateInst, ontModel.getProperty(OntModelHandler.nameSpace + OntModelHandler.hasVisitProperties.hasPatientsReturned), st.getPatientReturnNum());
             }
-        }
-    }
-
-    /* method to remove irrelevant data from dataMap
-        Input:- hospitalMap [Map<String, HospitalInfo>]
-     */
-    //@author Aditi
-    private void filterMapData(Map<String, HospitalInfo> hospitalMap) {
-        try {
-            hospitalMap.entrySet().removeIf(entry -> {
-                HospitalInfo h = entry.getValue();
-                return h.getHospitalName().equals("")
-                        || // Hospital doesn't have rating
-                        h.getRating().equals("Not Available"); // Hospital doesn't have rating
-            });
-        } catch (Exception ex) {
-            ex.printStackTrace();
         }
     }
 
@@ -330,8 +308,6 @@ public class OntHandler {
             //reading beneficiary data
             //@author Gayathri
             modelInstance.readBeneficiaryInfo();
-            // filter the map data
-            modelInstance.filterMapData(hospitalMap);
 
             // @author Upasana
             //adding general info to the data
